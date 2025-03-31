@@ -10,7 +10,7 @@ public class CountryEntry {
     private String name;
     @CsvCustomBindByName(converter = IntegerConverter.class, column = "Population")
     private int population;
-    @CsvCustomBindByName(converter = IntegerConverter.class, column = "Area")
+    @CsvCustomBindByName(converter = IntegerConverter.class, column = "Area (km²)")
     private int area;
 
     public CountryEntry() {
