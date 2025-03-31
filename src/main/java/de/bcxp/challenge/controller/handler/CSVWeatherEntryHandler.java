@@ -1,12 +1,8 @@
 package de.bcxp.challenge.controller.handler;
 
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
+import de.bcxp.challenge.controller.helper.CSVHelper;
 import de.bcxp.challenge.model.WeatherEntry;
 
-import java.io.FileReader;
 import java.util.List;
 
 /**
@@ -26,50 +22,13 @@ public class CSVWeatherEntryHandler implements IWeatherEntryHandler{
     }
 
     /**
-     * Method instantiates a CSVReader instance with values set according to data found in weather.csv
-     * @param reader Should be a valid instance of a FileReader.
-     * @return Instantiated CSVReader if input was correct, else throws IllegalArgumentException with error note.
-     */
-    protected CSVReader getReaderForWeatherCSV(FileReader reader){
-        if(reader != null){
-            CSVParser parser = new CSVParserBuilder()
-                    .withSeparator(',')
-                    .withIgnoreQuotations(true)
-                    .build();
-
-            CSVReader csvReader = new CSVReaderBuilder(reader)
-                    .withSkipLines(1)
-                    .withCSVParser(parser)
-                    .build();
-            return csvReader;
-        }
-        else {
-            throw new IllegalArgumentException("Input parameter should not be null.");
-        }
-
-    }
-
-    /**
-     * Method reads weather data in CSV format into List<String[]> format.
-     * @param csvFilePath Valid filepath to weather data in csv format.
-     * @return Weather data of input CSV file in format List<String[]>
-     * @throws Exception if input path is wrong/empty/false or instantiating the CSVReader is bad.
-     */
-    protected List<String[]> readCSVLines(String csvFilePath) throws Exception{
-        try (FileReader filereader = new FileReader(csvFilePath); ) {
-            CSVReader csvReader = getReaderForWeatherCSV(filereader);
-            return csvReader.readAll();
-        }
-    }
-
-    /**
      * TODO
      * @return
      */
     @Override
     public List<WeatherEntry> getWeatherEntries() {
         try {
-            List<String[]> csvLines = this.readCSVLines(this.getCsvFilePath());
+            List<String[]> csvLines = CSVHelper.readCSVLines(this.getCsvFilePath(), ',', 1);
         }
         catch(Exception e){
             System.out.println(e);
