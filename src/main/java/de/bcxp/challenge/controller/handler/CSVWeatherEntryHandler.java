@@ -47,7 +47,7 @@ public class CSVWeatherEntryHandler implements IWeatherEntryHandler{
     /**
      * Adapted setter for variable.
      * Checks if input is null or blank - throws IllegalArgumentException if so.
-     * @param csvFilePath Should contain valid path to to be handled CSV file.
+     * @param csvFilePath Should contain valid path to be handled CSV file.
      */
     public void setCsvFilePath(String csvFilePath) {
         if(csvFilePath == null || csvFilePath.isBlank()){
