@@ -8,6 +8,5 @@ import de.bcxp.challenge.model.WeatherEntry;
  * - State further needed methods for handling weather data in the future.
  */
 public interface IWeatherEntryHandler {
-    public WeatherEntry getWeatherEntry();
     public WeatherEntry getWeatherEntries();
 }
