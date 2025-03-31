@@ -2,6 +2,7 @@ package de.bcxp.challenge.controller.handler;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.exceptions.CsvException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,9 +10,6 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Basic weather data handler for working with data provided in CSV format.
- */
 public class CSVEntryHandler<T> implements IHandler<T>{
 
     private final String csvFilePath;
@@ -45,12 +43,23 @@ public class CSVEntryHandler<T> implements IHandler<T>{
                     .withSeparator(this.separator)
                     .withIgnoreLeadingWhiteSpace(true)
                     .withIgnoreEmptyLine(true)
+                    .withThrowExceptions(false)
                     .build();
-            return csvReader.parse();
+            List<T> parsedEntries = csvReader.parse();
+            logFaultyEntries(csvReader.getCapturedExceptions());
+            return parsedEntries;
         }
         catch(Exception e){
             System.out.println(e);
             return new ArrayList<>();
+        }
+    }
+
+    protected void logFaultyEntries(List<CsvException> exceptionsList){
+        for (int i = 0; i < exceptionsList.size(); i++) {
+            CsvException exception = exceptionsList.get(i);
+            System.out.println("Skipped bad CSV line: " + exception.getLineNumber());
+            System.out.println("Error message: " + exception.getMessage());
         }
     }
 }
