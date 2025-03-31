@@ -1,12 +1,20 @@
 package de.bcxp.challenge.model;
 
+import com.opencsv.bean.CsvCustomBindByName;
+import de.bcxp.challenge.model.converter.IntegerConverter;
+import lombok.Data;
+
 /**
  * Basic model class for WeatherEntries.
  * MAYBE: Add expected units to variable names once known.
  */
+@Data
 public class WeatherEntry {
+    @CsvCustomBindByName(converter = IntegerConverter.class, column = "Day")
     private int day;
+    @CsvCustomBindByName(converter = IntegerConverter.class, column = "MxT")
     private int maximumTemperature;
+    @CsvCustomBindByName(converter = IntegerConverter.class, column = "MnT")
     private int minimumTemperature;
 
     public int getDay() {
