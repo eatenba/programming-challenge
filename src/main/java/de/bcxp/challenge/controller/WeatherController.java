@@ -23,22 +23,19 @@ public class WeatherController {
         int smallestSpreadDay = -1;
         for (int i=0; i<weatherEntries.size(); i++){
             WeatherEntry currentEntry = weatherEntries.get(i);
-            int daySpread = currentEntry.getMaximumTemperature() - currentEntry.getMinimumTemperature();
-            if(isSpreadSmaller(smallestSpread, daySpread)){
-                smallestSpread = daySpread;
+            if(isContenderSpreadSmaller(smallestSpread, getWeatherEntryDaySpread(currentEntry))){
+                smallestSpread = getWeatherEntryDaySpread(currentEntry);
                 smallestSpreadDay = currentEntry.getDay();
             }
         }
         return smallestSpreadDay;
     }
 
-    /**
-     * Function computes if a spread is smaller than another.
-     * @param currentSmallestSpread Current spread.
-     * @param contenderSmallestSpread Spread to be checked against current spread.
-     * @return True if contenderSpread is smaller, else False.
-     */
-    protected static boolean isSpreadSmaller(int currentSmallestSpread, int contenderSmallestSpread){
-        return currentSmallestSpread > contenderSmallestSpread;
+    protected static int getWeatherEntryDaySpread(WeatherEntry weatherEntry){
+        return weatherEntry.getMaximumTemperature() - weatherEntry.getMinimumTemperature();
+    }
+
+    protected static boolean isContenderSpreadSmaller(int currentSpread, int contenderSpread){
+        return currentSpread > contenderSpread;
     }
 }

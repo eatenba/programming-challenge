@@ -24,13 +24,13 @@ public class WeatherControllerTests {
 
     @Test
     @DisplayName("Input of valid CSV should return list of String arrays. Exemplary generic class set to WeatherEntry")
-    void isSpreadSmallerWhenSpreadIsSmallerTest() {
+    void isContenderSpreadSmallerWhenSpreadIsSmallerTest() {
         //Arrange
         int currentSpread = 2;
         int contenderSpread = 1;
 
         //Act
-        boolean result = WeatherController.isSpreadSmaller(currentSpread, contenderSpread);
+        boolean result = WeatherController.isContenderSpreadSmaller(currentSpread, contenderSpread);
 
         //Assert
         assertTrue(result);
@@ -38,13 +38,13 @@ public class WeatherControllerTests {
 
     @Test
     @DisplayName("Input of valid CSV should return list of String arrays. Exemplary generic class set to WeatherEntry")
-    void isSpreadSmallerWhenSpreadIsNotSmallerTest() {
+    void isContenderSpreadSmallerWhenSpreadIsNotSmallerTest() {
         //Arrange
         int currentSpread = 2;
         int contenderSpread = 3;
 
         //Act
-        boolean result = WeatherController.isSpreadSmaller(currentSpread, contenderSpread);
+        boolean result = WeatherController.isContenderSpreadSmaller(currentSpread, contenderSpread);
 
         //Assert
         assertFalse(result);
