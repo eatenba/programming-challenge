@@ -3,7 +3,7 @@ package de.bcxp.challenge.model.converter;
 import com.opencsv.bean.AbstractBeanField;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 
-public class IntegerConverter extends AbstractBeanField<Integer, String> {
+public final class IntegerConverter extends AbstractBeanField<Integer, String> {
     @Override
     protected Integer convert(String value) throws CsvDataTypeMismatchException {
         try {

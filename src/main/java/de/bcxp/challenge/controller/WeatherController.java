@@ -5,7 +5,7 @@ import de.bcxp.challenge.model.WeatherEntry;
 
 import java.util.List;
 
-public class WeatherController {
+public final class WeatherController {
 
     private final IHandler<WeatherEntry> weatherEntryIHandler;
 

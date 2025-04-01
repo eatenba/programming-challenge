@@ -10,7 +10,7 @@ import lombok.NonNull;
  * MAYBE: Add expected units to variable names once known.
  */
 @Data
-public class WeatherEntry {
+public final class WeatherEntry {
 
     @CsvCustomBindByName(converter = IntegerConverter.class, column = "Day")
     private int day;

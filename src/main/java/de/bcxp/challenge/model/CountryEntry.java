@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import de.bcxp.challenge.model.converter.IntegerConverter;
 
-public class CountryEntry {
+public final class CountryEntry {
 
     @CsvBindByName(column = "Name")
     private String name;

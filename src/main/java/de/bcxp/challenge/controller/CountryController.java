@@ -5,7 +5,7 @@ import de.bcxp.challenge.model.CountryEntry;
 
 import java.util.List;
 
-public class CountryController {
+public final class CountryController {
 
     private final IHandler<CountryEntry> countryEntryIHandler;
 
