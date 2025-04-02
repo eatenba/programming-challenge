@@ -10,7 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class CSVEntryHandler<T> implements IHandler<T>{
+public class CSVEntryHandler<T> implements IHandler<T>{
 
     protected String csvFilePath;
     protected char separator;
