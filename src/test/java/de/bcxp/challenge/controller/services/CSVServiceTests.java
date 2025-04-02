@@ -1,4 +1,4 @@
-package de.bcxp.challenge.controller.handler;
+package de.bcxp.challenge.controller.services;
 
 import de.bcxp.challenge.model.WeatherEntry;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CSVEntryHandlerTests {
+public class CSVServiceTests {
 
     @Test
     @DisplayName("Invalid constructor test")
@@ -16,7 +16,7 @@ public class CSVEntryHandlerTests {
         //Arrange & Act
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
-                () -> new CSVEntryHandler<>(null, '1', WeatherEntry.class),
+                () -> new CSVService<>(null, '1', WeatherEntry.class),
                 "Expected working constructor to throw, but it didn't"
         );
 
@@ -30,7 +30,7 @@ public class CSVEntryHandlerTests {
         //Arrange & Act
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
-                () -> new CSVEntryHandler<>("", '1', WeatherEntry.class),
+                () -> new CSVService<>("", '1', WeatherEntry.class),
                 "Expected working constructor to throw, but it didn't"
         );
 
@@ -44,7 +44,7 @@ public class CSVEntryHandlerTests {
         //Arrange & Act
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
-                () -> new CSVEntryHandler<WeatherEntry>("src/temp.csv", '1', null),
+                () -> new CSVService<WeatherEntry>("src/temp.csv", '1', null),
                 "Expected working constructor to throw, but it didn't"
         );
 
@@ -56,7 +56,7 @@ public class CSVEntryHandlerTests {
     @DisplayName("Valid constructor test")
     void constructCSVEntryHandlerWhenInputOKTest(){
         //Arrange & Act
-        CSVEntryHandler<WeatherEntry> weatherEntry = new CSVEntryHandler<>("src/temp.csv", '1', WeatherEntry.class);
+        CSVService<WeatherEntry> weatherEntry = new CSVService<>("src/temp.csv", '1', WeatherEntry.class);
 
         //Assert
         assertEquals('1', weatherEntry.separator);
@@ -70,7 +70,7 @@ public class CSVEntryHandlerTests {
         try{
             //Arrange
             String path = "src/main/resources/de/bcxp/challenge/weather.csv";
-            CSVEntryHandler<WeatherEntry> handler = new CSVEntryHandler<>(path, ',', WeatherEntry.class);
+            CSVService<WeatherEntry> handler = new CSVService<>(path, ',', WeatherEntry.class);
             //Act
             List<WeatherEntry> result =  handler.getEntries();
             //Assert
@@ -88,7 +88,7 @@ public class CSVEntryHandlerTests {
         try{
             //Arrange
             String path = "src/main/resources/de/bcxp/challenge/xxx.csv";
-            CSVEntryHandler<WeatherEntry> handler = new CSVEntryHandler<>(path, ',', WeatherEntry.class);
+            CSVService<WeatherEntry> handler = new CSVService<>(path, ',', WeatherEntry.class);
             //Act
             List<WeatherEntry> result =  handler.getEntries();
             //Assert

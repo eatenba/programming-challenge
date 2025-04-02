@@ -1,4 +1,4 @@
-package de.bcxp.challenge.controller.handler;
+package de.bcxp.challenge.controller.services;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -10,7 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVEntryHandler<T> implements IHandler<T>{
+public class CSVService<T> implements IService<T> {
 
     protected String csvFilePath;
     protected char separator;
@@ -21,7 +21,7 @@ public class CSVEntryHandler<T> implements IHandler<T>{
      * Will be checked down the line
      * @param csvFilePath: Param cannot be blank or null, else a IllegalArgumentException is thrown.
      */
-    public CSVEntryHandler(String csvFilePath, char separator, Class<T> entryType){
+    public CSVService(String csvFilePath, char separator, Class<T> entryType){
         if(csvFilePath == null || csvFilePath.isBlank() || entryType == null){
             throw new IllegalArgumentException("Parameter cannot be null.");
         }
