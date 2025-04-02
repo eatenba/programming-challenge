@@ -3,8 +3,6 @@ package de.bcxp.challenge.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Watchable;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WeatherEntryTests {
