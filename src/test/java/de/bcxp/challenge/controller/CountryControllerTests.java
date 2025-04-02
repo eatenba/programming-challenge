@@ -17,10 +17,10 @@ public class CountryControllerTests {
         CountryController countryController = new CountryController(new CSVEntryHandler<>("src/main/resources/de/bcxp/challenge/countries.csv", ';', CountryEntry.class));
 
         //Act
-        String result = countryController.getHighestPopulatedCountry();
+        String result = countryController.getDensestPopulatedCountry();
 
         //Assert
-        assertEquals("Test", result);
+        assertEquals("Malta", result);
     }
 
 }

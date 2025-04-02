@@ -12,14 +12,14 @@ import java.util.List;
 
 public final class CSVEntryHandler<T> implements IHandler<T>{
 
-    private final String csvFilePath;
-    private final char separator;
-    private final Class<T> entryType;
+    protected final String csvFilePath;
+    protected final char separator;
+    protected final Class<T> entryType;
 
     /**
      * Default constructor should be given a valid csv file path.
      * Will be checked down the line
-     * @param csvFilePath: Param cannot be blank or null, else a IllegalargumentException is thrown.
+     * @param csvFilePath: Param cannot be blank or null, else a IllegalArgumentException is thrown.
      */
     public CSVEntryHandler(String csvFilePath, char separator, Class<T> entryType){
         if(csvFilePath == null || csvFilePath.isBlank() || entryType == null){
@@ -50,16 +50,21 @@ public final class CSVEntryHandler<T> implements IHandler<T>{
             return parsedEntries;
         }
         catch(Exception e){
-            System.out.println(e);
+            System.err.println(e.getMessage());
             return new ArrayList<>();
         }
     }
 
+    /**
+     * Function logs faulty CSV lines to error output.
+     * Could be replaced by a more sophisticated logging interface in production env.
+     * @param exceptionsList List of exceptions produced by CsvReader
+     */
     protected void logFaultyEntries(List<CsvException> exceptionsList){
         for (int i = 0; i < exceptionsList.size(); i++) {
             CsvException exception = exceptionsList.get(i);
-            System.out.println("Skipped bad CSV line: " + exception.getLineNumber());
-            System.out.println("Error message: " + exception.getMessage());
+            System.err.println("Skipped bad CSV line: " + exception.getLineNumber());
+            System.err.println("Error message: " + exception.getMessage());
         }
     }
 }
