@@ -12,9 +12,9 @@ import java.util.List;
 
 public final class CSVEntryHandler<T> implements IHandler<T>{
 
-    protected final String csvFilePath;
-    protected final char separator;
-    protected final Class<T> entryType;
+    protected String csvFilePath;
+    protected char separator;
+    protected Class<T> entryType;
 
     /**
      * Default constructor should be given a valid csv file path.
