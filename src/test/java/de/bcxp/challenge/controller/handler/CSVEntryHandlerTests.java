@@ -16,7 +16,7 @@ public class CSVEntryHandlerTests {
         //Arrange & Act
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
-                () -> new CSVEntryHandler<WeatherEntry>(null, '1', WeatherEntry.class),
+                () -> new CSVEntryHandler<>(null, '1', WeatherEntry.class),
                 "Expected working constructor to throw, but it didn't"
         );
 
@@ -30,7 +30,7 @@ public class CSVEntryHandlerTests {
         //Arrange & Act
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
-                () -> new CSVEntryHandler<WeatherEntry>("", '1', WeatherEntry.class),
+                () -> new CSVEntryHandler<>("", '1', WeatherEntry.class),
                 "Expected working constructor to throw, but it didn't"
         );
 
@@ -56,7 +56,7 @@ public class CSVEntryHandlerTests {
     @DisplayName("Valid constructor test")
     void constructCSVEntryHandlerWhenInputOKTest(){
         //Arrange & Act
-        CSVEntryHandler<WeatherEntry> weatherEntry = new CSVEntryHandler<WeatherEntry>("src/temp.csv", '1', WeatherEntry.class);
+        CSVEntryHandler<WeatherEntry> weatherEntry = new CSVEntryHandler<>("src/temp.csv", '1', WeatherEntry.class);
 
         //Assert
         assertEquals('1', weatherEntry.separator);
