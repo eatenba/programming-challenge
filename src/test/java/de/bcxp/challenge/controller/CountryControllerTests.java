@@ -155,4 +155,16 @@ public class CountryControllerTests {
         assertEquals(0, result);
     }
 
+    @Test
+    @DisplayName("Compute population density when input null.")
+    void getCountryEntryPopulationDensityWhenInputNullTest (){
+        //Arrange
+
+        //Act
+        double result = CountryController.getCountryEntryPopulationDensity(null);
+
+        //Assert
+        assertEquals(0, result);
+    }
+
 }

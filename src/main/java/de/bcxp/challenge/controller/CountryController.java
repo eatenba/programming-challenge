@@ -67,7 +67,7 @@ public class CountryController {
      * @return Computed density in double. Returns 0 when zero division occurs.
      */
     protected static double getCountryEntryPopulationDensity(CountryEntry countryEntry){
-        if(countryEntry.getArea() == 0){
+        if(countryEntry == null || countryEntry.getArea() == 0){
             return 0;
         } else {
             return countryEntry.getPopulation() / countryEntry.getArea();
