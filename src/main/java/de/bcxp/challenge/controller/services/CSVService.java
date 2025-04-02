@@ -47,6 +47,7 @@ public class CSVService<T> implements IService<T> {
                     .build();
             List<T> parsedEntries = csvReader.parse();
             logFaultyEntries(csvReader.getCapturedExceptions());
+            reader.close();
             return parsedEntries;
         }
         catch(Exception e){
