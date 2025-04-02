@@ -1,6 +1,5 @@
 package de.bcxp.challenge.controller.handler;
 
-import de.bcxp.challenge.controller.WeatherEntryController;
 import de.bcxp.challenge.model.WeatherEntry;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
